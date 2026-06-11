@@ -1,0 +1,40 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Clona el repositorio
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Instala Python 3.1x (usa 3.11 o 3.12)
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    # 3. Instala dependencias del proyecto
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # 4. Ejecuta migraciones
+    - name: Run migrations
+      env:
+        DJANGO_SETTINGS_MODULE: my_site.settings
+      run: |
+        python manage.py migrate
+
+    # 5. Ejecuta pydoc
+    - name: Run pydoc
+      run: |
+        python -m pydoc -k django
