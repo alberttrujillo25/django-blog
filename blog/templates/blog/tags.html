@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h1>Etiquetes</h1>
+
+{% for tag in tags %}
+    <a href="{% url 'tag-detail' tag.id %}">
+        <div class="card">
+            <h2>{{ tag.tag }}</h2>
+        </div>
+    </a>
+{% endfor %}
+
+{% endblock %}

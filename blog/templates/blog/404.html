@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<h1>404 - Pàgina no trobada</h1>
+
+<p>El post o la pàgina que busques no existeix.</p>
+
+<a href="{% url 'starting-page' %}">
+    Tornar a l'inici
+</a>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}Blog M3-UF6-DJANGO{% endblock %}
+
+{% block content %}
+
+<img src="{% static 'blog/imgs/img.png' %}">
+
+<h1>Benvingut al Blog M3 - UF6</h1>
+<p>Projecte de programació bloc 6</p>
+
+<h2>Darrers posts</h2>
+
+<div class="posts-grid">
+    {% for post in posts %}
+        <div class="card">
+
+            <img src="{% static 'blog/imgs/' %}{{ post.image_name }}" 
+                 alt="{{ post.title }}" 
+                 width="300">
+
+            <a href="{% url 'posts-detail-page' post.slug %}">
+                <h2>{{ post.title }}</h2>
+            </a>
+
+            <p>{{ post.excerpt }}</p>
+
+        </div>
+    {% endfor %}
+</div>
+
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore optio hic voluptates voluptatem aut, ducimus necessitatibus a vitae tempora officiis quo eos ipsam consequatur. Iste esse non blanditiis reprehenderit quia.</p>
+
+{% endblock %}

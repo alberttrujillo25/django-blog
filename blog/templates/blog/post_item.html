@@ -1,0 +1,11 @@
+<div class="card">
+    {% load static %}
+
+    <img src="{% static 'blog/imgs/' %}{{ post.image_name }}" alt="{{ post.title }}" width="300">
+
+    <a href="{% url 'posts-detail-page' post.slug %}">
+        <h2>{{ post.title }}</h2>
+    </a>
+
+    <p>{{ post.excerpt }}</p>
+</div>

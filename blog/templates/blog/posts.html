@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+
+<h1>Els darrers Posts</h1>
+
+<div class="posts-grid">
+    {% for post in posts %}
+        {% include "blog/post_item.html" %}
+    {% endfor %}
+</div>
+
+{% endblock %}
